@@ -1,6 +1,7 @@
 import pygame
 from random import randint
-import pygame
+pygame.font.init()
+
 pygame.font.get_fonts()
 ['arial', 'arialblack', 'bahnschrift', 'calibri', 'cambriacambriamath', 'cambria', 'candara', 'comicsansms', 'consolas', 'constantia', 'corbel', 'couriernew', 'ebrima', 'franklingothicmedium', 'gabriola', 'gadugi', 'georgia', 'impact', 'inkfree', 'javanesetext', 'leelawadeeui', 'leelawadeeuisemilight', 'lucidaconsole', 'lucidasans', 'malgungothic', 'malgungothicsemilight', 'microsofthimalaya', 'microsoftjhengheimicrosoftjhengheiui', 'microsoftjhengheimicrosoftjhengheiuibold', 'microsoftjhengheimicrosoftjhengheiuilight', 'microsoftnewtailue', 'microsoftphagspa', 'microsoftsansserif', 'microsofttaile', 'microsoftyaheimicrosoftyaheiui', 'microsoftyaheimicrosoftyaheiuibold', 'microsoftyaheimicrosoftyaheiuilight', 'microsoftyibaiti', 'mingliuextbpmingliuextbmingliuhkscsextb', 'mongolianbaiti', 'msgothicmsuigothicmspgothic', 'mvboli', 'myanmartext', 'nirmalaui', 'nirmalauisemilight', 'palatinolinotype', 'segoemdl2assets', 'segoeprint', 'segoescript', 'segoeui', 'segoeuiblack', 'segoeuiemoji', 'segoeuihistoric', 'segoeuisemibold', 'segoeuisemilight', 'segoeuisymbol', 'simsunnsimsun', 'simsunextb', 'sitkasmallsitkatextsitkasubheadingsitkaheadingsitkadisplaysitkabanner', 'sitkasmallsitkatextboldsitkasubheadingboldsitkaheadingboldsitkadisplayboldsitkabannerbold', 'sitkasmallsitkatextbolditalicsitkasubheadingbolditalicsitkaheadingbolditalicsitkadisplaybolditalicsitkabannerbolditalic', 'sitkasmallsitkatextitalicsitkasubheadingitalicsitkaheadingitalicsitkadisplayitalicsitkabanneritalic', 'sylfaen', 'symbol', 'tahoma', 'timesnewroman', 'trebuchetms', 'verdana', 'webdings', 'wingdings', 'yugothicyugothicuisemiboldyugothicuibold', 'yugothicyugothicuilight', 'yugothicmediumyugothicuiregular', 'yugothicregularyugothicuisemilight', 'dengxian', 'fangsong', 'kaiti', 'simhei', 'holomdl2assets', 'extra', 'fzshuti', 'fzyaoti', 'lisu', 'stcaiyun', 'stfangsong', 'sthupo', 'stkaiti', 'stliti', 'stsong', 'stxihei', 'stxingkai', 'stxinwei', 'stzhongsong', 'youyuan', 'haettenschweiler', 'msoutlook', 'bookantiqua', 'centurygothic', 'bookshelfsymbol7', 'msreferencesansserif', 'msreferencespecialty', 'garamond', 'monotypecorsiva', 'bookmanoldstyle', 'algerian', 'baskervilleoldface', 'bauhaus93', 'bell', 'berlinsansfb', 'berlinsansfbdemi', 'bernardcondensed', 'bodonipostercompressed', 'britannic', 'broadway', 'brushscript', 'californianfb', 'centaur', 'chiller', 'colonna', 'cooperblack', 'footlight', 'freestylescript', 'harlowsolid', 'harrington', 'hightowertext', 'jokerman', 'juiceitc', 'kristenitc', 'kunstlerscript', 'lucidabright', 'lucidacalligraphy', 'lucidafaxregular', 'lucidafax', 'lucidahandwriting', 'magneto', 'maturascriptcapitals', 'mistral', 'modernno20', 'niagaraengraved', 'niagarasolid', 'oldenglishtext', 'onyx', 'parchment', 'playbill', 'poorrichard', 'ravie', 'informalroman', 'showcardgothic', 'snapitc', 'stencil', 'tempussansitc', 'vinerhanditc', 'vivaldi', 'vladimirscript', 'widelatin', 'century', 'wingdings2', 'wingdings3', 'arialms', 'msmincho', 'acaderef', 'aigdt', 'amdtsymbols', 'geniso', 'amgdt', 'bankgothic', 'bankgothicmedium', 'cityblueprint', 'commercialpi', 'commercialscript', 'countryblueprint', 'dutch801roman', 'dutch801', 'dutch801extra', 'euroroman', 'euroromanoblique', 'monospace821', 'panroman', 'romantic', 'romans', 'sansserif', 'sansserifboldoblique', 'sansserifoblique', 'stylus', 'superfrench', 'swiss721', 'swiss721outline', 'swiss721condensed', 'swiss721condensedoutline', 'swiss721blackcondensed', 'swiss721extended', 'swiss721blackextended', 'swiss721black', 'swiss721blackoutline', 'technicbold', 'techniclite', 'technic', 'universalmath1', 'vineta', 'isocpeur', 'isocteur', 'proxy9', 'proxy8', 'proxy7', 'proxy6', 'proxy5', 'proxy4', 'proxy3', 'symusic', 'symeteo', 'symath', 'symap', 'syastro', 'romant', 'romand', 'romanc', 'italict', 'greeks', 'greekc', 'gothicg', 'gothice', 'txt', 'simplex', 'scripts', 'scriptc', 'proxy2', 'proxy1', 'monotxt', 'italicc', '', 'isoct3', 'isoct2', 'isoct', 'isocp3', 'isocp2', 'isocp', 'gothici', 'gdt', 'complex', 'thcadsymbsttf', 'thcadsymbs', 'zwadobef', 'eurosign', 'lucidabrightregular', 'lucidasansregular', 'lucidasanstypewriter', 'lucidasanstypewriterregular', 'adobeheitistdregular', 'adobemingstdlight', 'adobemyungjostdmedium', 'adobepistd', 'adobesongstdlight', 'courierstd', 'courierstdbold', 'courierstdboldoblique', 'courierstdoblique', 'kozgopr6nmedium', 'kozminpr6nregular', 'myriadcad', 'hyswlongfangsong', 'swastro', 'olfsimplesansocregular', 'swcomp', 'swgothe', 'swgothg', 'swgothi', 'swgrekc', 'swgreks', 'swisop1', 'swisop2', 'swisop3', 'swisot1', 'swisot2', 'swisot3', 'swital', 'switalc', 'switalt', 'swmap', 'swmath', 'swmeteo', 'swmono', 'swmusic', 'swromnc', 'swromnd', 'swromns', 'swromnt', 'swscrpc', 'swscrps', 'swsimp', 'swtxt', 'swgdt', 'swlink', 'dejavusansmono', 'dejavusansmonooblique', 'freesans']
 
@@ -17,8 +18,8 @@ try:
 except:
     print("O modulo do pygame nao inicializado com sucesso")
 #definindo tamanho da  tela    
-largura=640
-altura=480
+largura=320
+altura=240
 tamanho=10
 
 
@@ -28,12 +29,12 @@ relogio=pygame.time.Clock() #controlar os frames por segundos
 fundo=pygame.display.set_mode((largura,altura))
 
 pygame.display.set_caption("jogo_snake")
-#font =  pygame.font.SysFont(None, 25)
+font =  pygame.font.SysFont('constantia', 14)
 
 
 def texto(msg,cor):
     texto1=font.render(msg,True,cor)
-    fundo.blit(texto1,[largura/2,altura/2])
+    fundo.blit(texto1,[largura/12,altura/2])
 
 
 #criar um loop infinito do jogo que da sençasao que as peças estao mudando
@@ -75,10 +76,7 @@ def jogo():
                         jogo()
                     if event.key== pygame.K_s:
                         sair=False
-                        fim_de_jogo=False
-                        
-
-                
+                        fim_de_jogo=False          
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -138,16 +136,12 @@ def jogo():
         
         #para que a snake morra quando tocar a margem
         if pos_x >largura:
-            sair=False
             fim_de_jogo=True
         if pos_x < 0:
-            sair=False
             fim_de_jogo=True
         if pos_y >altura:
-            sair=False
             fim_de_jogo=True
         if pos_y < 0:
-            sair=False
             fim_de_jogo=True
                 
 
