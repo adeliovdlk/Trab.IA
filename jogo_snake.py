@@ -19,8 +19,9 @@ except:
     print("O modulo do pygame nao inicializado com sucesso")
 #definindo tamanho da  tela    
 largura=320
-altura=240
+altura=280
 tamanho=10
+placar=40
 
 
 relogio=pygame.time.Clock() #controlar os frames por segundos
@@ -29,12 +30,12 @@ relogio=pygame.time.Clock() #controlar os frames por segundos
 fundo=pygame.display.set_mode((largura,altura))
 
 pygame.display.set_caption("jogo_snake")
-font =  pygame.font.SysFont('constantia', 14)
 
 
-def texto(msg,cor):
+def texto(msg,cor,tam,x,y):
+    font =  pygame.font.SysFont('constantia', tam)
     texto1=font.render(msg,True,cor)
-    fundo.blit(texto1,[largura/12,altura/2])
+    fundo.blit(texto1,[x,y])
 
 
 #criar um loop infinito do jogo que da sençasao que as peças estao mudando
@@ -52,20 +53,22 @@ def jogo():
     fim_de_jogo=False
     #o retangulo deve ser desenhado dentro do loop para q sempre fique visivel
     pos_x=randrange(0,largura-tamanho,10)  #com metodo randint a cobra inicia cada vez em uma posicao diferente
-    pos_y=randrange(0,largura-tamanho,10)
+    pos_y=randrange(0,largura-tamanho-placar,10)
     maca_x=randrange(0,largura-tamanho,10) 
-    maca_y=randrange(0,altura-tamanho,10)
+    maca_y=randrange(0,altura-tamanho-placar,10)
 
     velocidade_x=0
     velocidade_y=0
     
     CobraXY=[]  #listta
     CobraComp=1
+    pontos=0
+    
 
     while sair:
         while fim_de_jogo:
             fundo.fill(white)
-            texto("Fim de jogo, para continuar tecle C ou S para sair",red)
+            texto("Fim de jogo, para continuar tecle C ou S para sair",red,14,largura/12,altura/2)
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -77,15 +80,16 @@ def jogo():
                         fim_de_jogo=False
                         #o retangulo deve ser desenhado dentro do loop para q sempre fique visivel
                         pos_x=randrange(0,largura-tamanho,10)  
-                        pos_y=randrange(0,largura-tamanho,10)
+                        pos_y=randrange(0,largura-tamanho-placar,10)
                         maca_x=randrange(0,largura-tamanho,10) 
-                        maca_y=randrange(0,altura-tamanho,10)
+                        maca_y=randrange(0,altura-tamanho-placar,10)
 
                         velocidade_x=0
                         velocidade_y=0
                         
                         CobraXY=[]  #listta
                         CobraComp=1
+                        pontos=0
                     if event.key== pygame.K_s:
                         sair=False
                         fim_de_jogo=False          
@@ -113,28 +117,30 @@ def jogo():
             fundo.fill(white)            #preenche a tela com uma cor escolhida   
         pos_x+=velocidade_x
         pos_y+=velocidade_y
-        
+
+        #controle para comer a maca com base na posicao
         if pos_x==maca_x and pos_y == maca_y:
             maca_x=randrange(0,largura-tamanho,10) 
-            maca_y=randrange(0,altura-tamanho,10)
+            maca_y=randrange(0,altura-tamanho-placar,10)
             CobraComp +=1
+            pontos+=1
 
         ##        #para que a snake atravesse a parede saia dooutro lado
-##        if pos_x >largura:
+##        if pos_x + tamanho >largura:
 ##            pos_x=0
 ##        if pos_x < 0:
 ##            pos_x=largura-tamanho
-##        if pos_y >altura:
+##        if pos_y + tamanho>altura-placar:
 ##            pos_y=0
 ##        if pos_y < 0:
-##            pos_y=altura-tamanho
+##            pos_y=altura-tamanho -placar
         
         #para que a snake morra quando tocar a margem
-        if pos_x >largura:
+        if pos_x +tamanho > largura:
             fim_de_jogo=True
         if pos_x < 0:
             fim_de_jogo=True
-        if pos_y >altura:
+        if pos_y +tamanho > altura - placar:
             fim_de_jogo=True
         if pos_y < 0:
             fim_de_jogo=True
@@ -154,7 +160,11 @@ def jogo():
         
         cobra(CobraXY) #qdno a cobra come a maca
         
+        #desenha retangulopara o placar
+        pygame.draw.rect(fundo,black,[0,altura-placar,largura,placar])
 
+        #texto do placar
+        texto("Score:"+str(pontos),white,20,10,altura-30)
         
         maca(maca_x, maca_y)
         #pos_x+=0.1 teste de movimento                
