@@ -29,7 +29,7 @@ relogio=pygame.time.Clock() #controlar os frames por segundos
 
 fundo=pygame.display.set_mode((largura,altura))
 
-pygame.display.set_caption("jogo_snake")
+pygame.display.set_caption("jogo_snake do Andre")
 
 
 def texto(msg,cor,tam,x,y):
@@ -67,9 +67,6 @@ def jogo():
 
     while sair:
         while fim_de_jogo:
-            fundo.fill(white)
-            texto("Fim de jogo, para continuar tecle C ou S para sair",red,14,largura/12,altura/2)
-            pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sair=False
@@ -92,7 +89,40 @@ def jogo():
                         pontos=0
                     if event.key== pygame.K_s:
                         sair=False
-                        fim_de_jogo=False          
+                        fim_de_jogo=False
+                        #controle do click do mouse
+                if event.type== pygame.MOUSEBUTTONDOWN:
+                    x=pygame.mouse.get_pos()[0]
+                    y=pygame.mouse.get_pos()[1]
+                    print(pygame.mouse.get_pos())
+                    #botao continuar
+                    if x>45 and y >120 and x<180 and y <150:
+                        sair= True
+                        fim_de_jogo=False
+                        #o retangulo deve ser desenhado dentro do loop para q sempre fique visivel
+                        pos_x=randrange(0,largura-tamanho,10)  
+                        pos_y=randrange(0,largura-tamanho-placar,10)
+                        maca_x=randrange(0,largura-tamanho,10) 
+                        maca_y=randrange(0,altura-tamanho-placar,10)
+
+                        velocidade_x=0
+                        velocidade_y=0
+                        
+                        CobraXY=[]  #listta
+                        CobraComp=1
+                        pontos=0
+                    elif x>190 and y >120 and x <265 and y <150:
+                        sair=False
+                        fim_de_jogo=False
+
+            fundo.fill(white)
+            texto("Fim de jogo",red,50,65,30)
+            texto("Pontuação final: "+str(pontos),black,30,70,80)
+            pygame.draw.rect(fundo,black,[45,120,140,35])
+            texto("Continuar(c)",white,30,50,125)#botao c
+            pygame.draw.rect(fundo,black,[190,120,75,35])
+            texto("Sair(s)",white,30,195,125)#botao s
+            pygame.display.update()
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
